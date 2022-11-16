@@ -3,7 +3,6 @@ import path from "path";
 import fs from "fs";
 import chalk from "chalk";
 import os from "os";
-// import { spawnSync } from "child_process";
 import AdmZip from "adm-zip";
 import createHxb from "./scripts/notificationMessage";
 import brandMessage from "./scripts/brandMessage";
@@ -106,9 +105,11 @@ export async function cli(args) {
               const zip = new AdmZip(res.data);
               const files = zip.getEntries();
               files.forEach((file) => {
+
                 //Only copy files as we are handling the folders
                 if (!file.entryName.endsWith("/")) {
                   let newDestination = destination;
+
                   //Remove the root directory
                   let entryPath = file.entryName.substring(
                     file.entryName.indexOf("/") + 1,
@@ -120,6 +121,7 @@ export async function cli(args) {
                     entryPath.includes("/") &&
                     entryPath.lastIndexOf("/") !== entryPath.length - 1
                   ) {
+
                     //Just add the path to the file, not the file itself
                     newDestination = path.join(
                       newDestination,
