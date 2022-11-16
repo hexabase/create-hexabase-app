@@ -9,9 +9,11 @@ npx create-hexabase-app <name>
 ```
 
 Then, let's select your application
+
 ![name](assets/select-name.png)
 
 And select installer package
+
 ![name](assets/select-installer.png)
 
 Once you got the code, to start the project:
