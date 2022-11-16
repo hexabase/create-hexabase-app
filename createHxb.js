@@ -77,6 +77,12 @@ export async function cli(args) {
           options.projectName === "."
             ? path.join(process.cwd(), "hexabase-app")
             : path.join(process.cwd(), options.projectName);
+        console.log(
+          `app name: ${chalk.yellow(
+            (options.projectName !== "." && options.projectName) ||
+              "hexabase-app"
+          )}`
+        );
         fs.mkdirSync(destination);
         console.log(
           `Creating a new Hexabase sdk app in ${chalk.cyan(destination)}...`

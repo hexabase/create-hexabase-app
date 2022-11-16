@@ -1,6 +1,6 @@
 {
   "name": "create-hexabase-app",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "description": "Hexabase SDK integrated application, multi-platform",
   "files": [
     "index.js",
