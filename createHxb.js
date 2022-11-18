@@ -150,17 +150,20 @@ export async function cli(args) {
 
                 const npmCmd = selected.value.command;
                 npmCmd === "npm"
-                  ? spawn("npm", ["install", "--save", "--save-exact"], {
+                  ? spawn.sync("npm", ["install", "--save", "--save-exact"], {
                       env: process.env,
                       cwd: destination,
                       stdio: "inherit",
                     })
-                  : spawn("yarn", ["--exact"], {
+                  : spawn.sync("yarn", ["--exact"], {
                       env: process.env,
                       cwd: destination,
                       stdio: "inherit",
                     });
-                nextSteps();
+                
+                const appName = (options.projectName !== "." && options.projectName) ||
+                "hexabase-app"
+                nextSteps(appName);
               });
             });
           });
