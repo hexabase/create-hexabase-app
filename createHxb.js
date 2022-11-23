@@ -2,7 +2,6 @@ import arg from "arg";
 import path from "path";
 import fs from "fs";
 import chalk from "chalk";
-import os from "os";
 import AdmZip from "adm-zip";
 import createHxb from "./scripts/notificationMessage";
 import brandMessage from "./scripts/brandMessage";
@@ -106,23 +105,23 @@ export async function cli(args) {
               const files = zip.getEntries();
               files.forEach((file) => {
 
-                //Only copy files as we are handling the folders
+                // only copy files as we are handling the folders
                 if (!file.entryName.endsWith("/")) {
                   let newDestination = destination;
 
-                  //Remove the root directory
+                  // remove the root directory
                   let entryPath = file.entryName.substring(
                     file.entryName.indexOf("/") + 1,
                     file.entryName.length
                   );
 
-                  //Get the new path for subdirectories
+                  // get the new path for subdirectories
                   if (
                     entryPath.includes("/") &&
                     entryPath.lastIndexOf("/") !== entryPath.length - 1
                   ) {
 
-                    //Just add the path to the file, not the file itself
+                    // just add the path to the file, not the file itself
                     newDestination = path.join(
                       newDestination,
                       entryPath.substring(0, entryPath.lastIndexOf("/"))
